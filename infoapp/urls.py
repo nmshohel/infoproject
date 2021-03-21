@@ -13,5 +13,11 @@ urlpatterns = [
     path('change-password', change_password , name='change_password'),
     path('pbs-info-berc-form', pbs_info_berc_form , name='pbs_info_berc_form'), 
     path('user_register', user_register , name='user_register'),
-    path('my-berc-info', my_berc_info , name='my_berc_info'),    
+    path('my-berc-info', my_berc_info , name='my_berc_info'),  
+    path('new-online-connection', new_online_connection , name='new_online_connection'), 
+    path('my-new-con-info', my_new_con_info , name='my_new_con_info'),  
+
+     
+
+
 ]

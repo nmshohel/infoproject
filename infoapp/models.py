@@ -44,3 +44,15 @@ class PbsInfoBERC(models.Model):
 
     def __str__(self):
         return str(self.complain_nos)
+
+class NewOnlineConnection(models.Model):
+    pbs_code=models.IntegerField(blank=True, null=True)
+    month=models.CharField(max_length=10, blank=True, null=True)
+    year=models.CharField(max_length=10,blank=True, null=True)
+    total_app=models.IntegerField(blank=True,null=True)
+    total_solve_app=models.IntegerField(blank=True, null=True)
+    cause_of_unsolve=models.TextField(max_length=250, blank=True, null=True)
+    remark=models.TextField(max_length=250, blank=True, null=True)
+
+    def __str__(self):
+        return str(self.total_app)

@@ -45,51 +45,68 @@ def pbs_info_berc_form(request):
     if request.method=='POST':
         current_user=request.user
         user_id=current_user.id
-        print(current_user)
-        print(user_id)
-        # user_basic_info=User.objects.get(pk=user_id)
         user_pbs_info=PbsInfo.objects.get(user__pk=user_id)
-        print(user_pbs_info.pbs_code)
         month_id=request.POST['month']
         year_id=request.POST['year']
         month=Month.objects.get(id=month_id)
         year=Year.objects.get(id=year_id)
-        # month=request.POST.get('month')
-        # year=request.POST.get('year')
         comp_nos=request.POST.get('complain_nos')
         comp_solve=request.POST.get('complain_solve')
         com_unsolve_case=request.POST.get('complain_unsolve_case')
         com_remarks=request.POST.get('complain_remark')
-        # pbs_cod=user_pbs_info.pbs_code
-        # print(pbs_code)
         PbsInfoBERC.objects.create(pbs_code=user_pbs_info.pbs_code,complain_nos = comp_nos, complain_solve = comp_solve,complain_unsolve_case=com_unsolve_case,complain_remark=com_remarks,month=month,year=year)
         berc_form= PbsInfoBERCForm()
-        message = "Successfully Added!"
+        message = "Information Successfully Added!"
         context = {'berc_form':berc_form, 'message':message}
         return render(request, 'berc_form.html', context)
     else:
         berc_form=PbsInfoBERCForm()
         context={'berc_form':berc_form}
         return render(request,'berc_form.html',context)
+def new_online_connection(request):
+    if request.method=='POST':
+        current_user=request.user
+        user_id=current_user.id
+        user_pbs_info=PbsInfo.objects.get(user__pk=user_id)
+        month_id=request.POST['month']
+        year_id=request.POST['year']
+        month=Month.objects.get(id=month_id)
+        year=Year.objects.get(id=year_id)
+        u_total_app=request.POST.get('total_app')
+        u_total_solve_app=request.POST.get('total_solve_app')
+        u_cause_of_unsolve=request.POST.get('cause_of_unsolve')
+        u_remark=request.POST.get('remark')
+        NewOnlineConnection.objects.create(pbs_code=user_pbs_info.pbs_code,total_app = u_total_app, total_solve_app = u_total_solve_app,cause_of_unsolve=u_cause_of_unsolve,remark=u_remark,month=month,year=year)
+        new_con_form= NewOnlineConnectionForm()
+        message = "Information Successfully Added!"
+        context = {'new_con_form':new_con_form, 'message':message}
+        return render(request, 'new_online_connection.html', context)
+    else:
+        new_con_form=NewOnlineConnectionForm()
+        context={'new_con_form':new_con_form}
+        return render(request,'new_online_connection.html',context)
 
 
 def my_berc_info(request):
-
     current_user=request.user
     user_id=current_user.id
-    # print(current_user)
-    # print(user_id)
-    print()
-
-
-
-    # user_basic_info=User.objects.get(pk=user_id)
     user_pbs_info=PbsInfo.objects.get(user__pk=user_id)
-    
     pbs_code=user_pbs_info.pbs_code
     my_data=PbsInfoBERC.objects.filter(pbs_code=pbs_code)
     context={'my_data':my_data,'user_pbs_info':user_pbs_info}
     return render(request, 'my_brec_info.html',context)
+
+
+def my_new_con_info(request):
+    current_user=request.user
+    user_id=current_user.id
+    user_pbs_info=PbsInfo.objects.get(user__pk=user_id)
+    pbs_code=user_pbs_info.pbs_code
+    print(pbs_code)
+    my_data=NewOnlineConnection.objects.filter(pbs_code=pbs_code)
+    context={'my_data':my_data,'user_pbs_info':user_pbs_info}
+    return render(request, 'my_new_con_info.html',context)
+
 
 def user_register(request):
     if request.method=='POST':

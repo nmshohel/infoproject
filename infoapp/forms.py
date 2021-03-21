@@ -49,6 +49,21 @@ class PBSInfoForm(forms.ModelForm):
             'pbs_code':forms.NumberInput(attrs={'class':'rounded form form-control bg-light col-md-8', 'placeholder':"PBS Code"}),    
         } 
 
+class NewOnlineConnectionForm(forms.ModelForm):
+    month = forms.ModelChoiceField(widget=forms.Select(attrs={'class':'form form-control bg-light col-md-6',}), queryset =Month.objects.all())
+    year = forms.ModelChoiceField(widget=forms.Select(attrs={'class':'form form-control bg-light col-md-6',}), queryset =Year.objects.all())
+    class Meta:
+        model= NewOnlineConnection
+        fields=['total_app','month','year','total_solve_app','cause_of_unsolve','remark']
+
+        widgets={
+            'total_app':forms.NumberInput( attrs={'class':'form form-control bg-light', 'placeholder':"Complain Nos"}),
+            'total_solve_app':forms.NumberInput(attrs={'class':'form form-control bg-light', 'placeholder':"Complain Solve Nos"}),
+            'cause_of_unsolve':forms.Textarea(attrs={'class':'form form-control bg-light', 'placeholder':"Complain Unsolve Case",'rows':4, 'cols':40}),
+            'remark':forms.Textarea(attrs={'class':'form form-control bg-light', 'placeholder':"Remarks",'rows':4, 'cols':40}),
+                 
+        } 
+
 
 
 
