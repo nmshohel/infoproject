@@ -5,6 +5,7 @@ from django.db import models
 from .models import *
 from .forms import *
 import bangla
+from django.core.mail import send_mail
 # Create your views here.
 
 
@@ -25,6 +26,17 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect('/')
+
+def forgot_password(request):
+    if request.method=='POST':
+        u_email=request.POST.get('uname1')
+        send_mail('dffdgvfg','fgghgfhg','nur.mohammad525452@gmail.com',['nmshohel1992@gmail.com'])
+        # user=User.objects.get
+        print(u_email)
+        msg="Please Check your email"
+        context={'msg':msg}
+        return HttpResponse("OK")
+    return render(request, 'forgot_password.html')
 
 def home_page(request):
     print('hello')
@@ -94,6 +106,29 @@ def new_online_connection(request):
         new_con_form=NewOnlineConnectionForm()
         context={'new_con_form':new_con_form}
         return render(request,'new_online_connection.html',context)
+
+def industry_comercial_consumer_dc_rc(request):
+    if request.method=='POST':
+        current_user=request.user
+        user_id=current_user.id
+        user_pbs_info=PbsInfo.objects.get(user__pk=user_id)
+        month_id=request.POST['month']
+        year_id=request.POST['year']
+        month=Month.objects.get(id=month_id)
+        year=Year.objects.get(id=year_id)
+        u_total_dc_app=request.POST.get('total_dc_app')
+        u_total_app_get_for_rc=request.POST.get('total_app_get_for_rc')
+        u_complete_rc_app=request.POST.get('complete_rc_app')
+        u_illegal_app_for_dc=request.POST.get('illegal_app_for_dc')
+        IndustryCommercialDcRc.objects.create(pbs_code=user_pbs_info.pbs_code,total_dc_app = u_total_dc_app, complete_rc_app = u_complete_rc_app,illegal_app_for_dc=u_illegal_app_for_dc,total_app_get_for_rc=u_total_app_get_for_rc,month=month,year=year)
+        new_form= IndustryCommercialDcRcForm()
+        message = "Information Successfully Added!"
+        context = {'new_form':new_form, 'message':message}
+        return render(request, 'industry_commercial_consumer.html', context)
+    else:
+        new_form=IndustryCommercialDcRcForm()
+        context={'new_form':new_form}
+        return render(request,'industry_commercial_consumer.html',context)
 
 
 def my_berc_info(request):

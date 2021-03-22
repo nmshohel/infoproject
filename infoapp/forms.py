@@ -64,6 +64,23 @@ class NewOnlineConnectionForm(forms.ModelForm):
                  
         } 
 
+class IndustryCommercialDcRcForm(forms.ModelForm):
+    month = forms.ModelChoiceField(widget=forms.Select(attrs={'class':'form form-control bg-light col-md-6',}), queryset =Month.objects.all())
+    year = forms.ModelChoiceField(widget=forms.Select(attrs={'class':'form form-control bg-light col-md-6',}), queryset =Year.objects.all())
+    class Meta:
+        model= IndustryCommercialDcRc
+        fields=['total_dc_app','month','year','total_app_get_for_rc','complete_rc_app','illegal_app_for_dc']
+
+        widgets={
+            'total_dc_app':forms.NumberInput( attrs={'class':'form form-control bg-light', 'placeholder':"Total Dc"}),
+            'total_app_get_for_rc':forms.NumberInput(attrs={'class':'form form-control bg-light', 'placeholder':"total app get for rc"}),
+            'complete_rc_app':forms.NumberInput( attrs={'class':'form form-control bg-light', 'placeholder':"Colplete rc app"}),
+            'illegal_app_for_dc':forms.NumberInput(attrs={'class':'form form-control bg-light', 'placeholder':"Illegal app for dc"}),
+            
+                 
+        } 
+
+
 
 
 
