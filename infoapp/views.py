@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from .models import *
 from .forms import *
+import bangla
 # Create your views here.
 
 
@@ -50,11 +51,19 @@ def pbs_info_berc_form(request):
         year_id=request.POST['year']
         month=Month.objects.get(id=month_id)
         year=Year.objects.get(id=year_id)
+        b_month=bangla.convert_english_digit_to_bangla_digit(month)
+        b_year=bangla.convert_english_digit_to_bangla_digit(year)
         comp_nos=request.POST.get('complain_nos')
         comp_solve=request.POST.get('complain_solve')
+        b_comp_nos=bangla.convert_english_digit_to_bangla_digit(comp_nos)
+        b_comp_solve=bangla.convert_english_digit_to_bangla_digit(comp_solve)
+        print(b_year)
+        print(b_comp_nos)
+        print(b_comp_solve)
         com_unsolve_case=request.POST.get('complain_unsolve_case')
         com_remarks=request.POST.get('complain_remark')
-        PbsInfoBERC.objects.create(pbs_code=user_pbs_info.pbs_code,complain_nos = comp_nos, complain_solve = comp_solve,complain_unsolve_case=com_unsolve_case,complain_remark=com_remarks,month=month,year=year)
+
+        PbsInfoBERC.objects.create(pbs_code=user_pbs_info.pbs_code,complain_nos = b_comp_nos, complain_solve = b_comp_solve,complain_unsolve_case=com_unsolve_case,complain_remark=com_remarks,month=b_month,year=b_year)
         berc_form= PbsInfoBERCForm()
         message = "Information Successfully Added!"
         context = {'berc_form':berc_form, 'message':message}
