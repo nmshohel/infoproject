@@ -13,12 +13,15 @@ class Year(models.Model):
     def __str__(self):
         return str(self.name)
 class ManagementInfo(models.Model):
-    user_name=models.CharField(max_length=250,blank=True,null=True)
-    m_name=models.CharField(max_length=100)
-    m_id=models.IntegerField(blank=True,null=True)
+    user=models.OneToOneField(User, on_delete=models.CASCADE)
+    name=models.CharField(max_length=100)
+    name_bengali=models.CharField(max_length=250, blank=True, null=True)
+    management_status=models.BooleanField(default=True, blank=True, null=True)
+    management_code=models.IntegerField(blank=True, null=True)
+
 
     def __str__ (self):
-        return self.m_name
+        return self.name
 
 
 class PbsInfo(models.Model):

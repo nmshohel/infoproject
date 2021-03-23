@@ -66,12 +66,27 @@
                                     <a class="nav-link" href="{% url 'infoapp:monthly_coordination_meeting_info' %}">Coordination Meeting</a>
                                     <a class="nav-link" href="{% url 'infoapp:necessary_action_against_accident' %}"> Action Against Accident</a>
 
-                                    necessary_action_against_accident
-                                    
-
-                                    
-                                    <a class="nav-link" href="{% url 'infoapp:my_berc_info' %}">My BERC Info</a>
                                     <a class="nav-link" href="{% url 'infoapp:new_online_connection' %}">New Connection Info</a>
+
+                                </nav>
+                            </div>
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayoutss" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Reports
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            
+                            <div class="collapse" id="collapseLayoutss" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    
+                                    <a class="nav-link" href="{% url 'infoapp:my_berc_info' %}">BERC Info</a>
+                                    <a class="nav-link" href="{% url 'infoapp:my_industry_commercial_dc_rc' %}">Industry Commercial DC RC</a>
+                                    <a class="nav-link" href="{% url 'infoapp:my_dc_consumer' %}">DC Consumer</a>
+                                    <a class="nav-link" href="{% url 'infoapp:my_connected_consumer' %}">Connected Consumer</a>
+                                    <a class="nav-link" href="{% url 'infoapp:my_domestic_connection_seven_day' %}">Domestic Connection Seven Days</a>
+                                    <a class="nav-link" href="{% url 'infoapp:my_monthly_coordination_meeting' %}">Coordination Meeting</a>
+                                    <a class="nav-link" href="{% url 'infoapp:my_actin_against_accident' %}">Action Against Accident</a>
+
                                     <a class="nav-link" href="{% url 'infoapp:my_new_con_info' %}">My New ConnectionInfo</a>
                                 </nav>
                             </div>

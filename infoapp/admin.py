@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import *
 
 class ManagementInfoadmin(admin.ModelAdmin):
-    list_display=('m_name','m_id')
+    list_display=('name','name_bengali','management_status','management_code')
 
 class PbsInfoadmin(admin.ModelAdmin):
     list_display=('user','management_id','pbs_code','mobile_no')

@@ -296,6 +296,60 @@ def my_new_con_info(request):
     my_data=NewOnlineConnection.objects.filter(pbs_code=pbs_code)
     context={'my_data':my_data,'user_pbs_info':user_pbs_info}
     return render(request, 'my_new_con_info.html',context)
+def my_industry_commercial_dc_rc(request):
+    current_user=request.user
+    user_id=current_user.id
+    user_pbs_info=PbsInfo.objects.get(user__pk=user_id)
+    pbs_code=user_pbs_info.pbs_code
+    print(pbs_code)
+    my_data=IndustryCommercialDcRc.objects.filter(pbs_code=pbs_code)
+    context={'my_data':my_data,'user_pbs_info':user_pbs_info}
+    return render(request, 'my_industry_commercial_dc_rc.html',context)
+def my_dc_consumer(request):
+    current_user=request.user
+    user_id=current_user.id
+    user_pbs_info=PbsInfo.objects.get(user__pk=user_id)
+    pbs_code=user_pbs_info.pbs_code
+    print(pbs_code)
+    my_data=DcConsumerInfo.objects.filter(pbs_code=pbs_code)
+    context={'my_data':my_data,'user_pbs_info':user_pbs_info}
+    return render(request, 'my_dc_consumer.html',context)
+def my_connected_consumer(request):
+    current_user=request.user
+    user_id=current_user.id
+    user_pbs_info=PbsInfo.objects.get(user__pk=user_id)
+    pbs_code=user_pbs_info.pbs_code
+    print(pbs_code)
+    my_data=ConnectedConsumerInfo.objects.filter(pbs_code=pbs_code)
+    context={'my_data':my_data,'user_pbs_info':user_pbs_info}
+    return render(request, 'my_connected_consumer.html',context)
+def my_domestic_connection_seven_day(request):
+    current_user=request.user
+    user_id=current_user.id
+    user_pbs_info=PbsInfo.objects.get(user__pk=user_id)
+    pbs_code=user_pbs_info.pbs_code
+    print(pbs_code)
+    my_data=DomesticConnectionSevenDay.objects.filter(pbs_code=pbs_code)
+    context={'my_data':my_data,'user_pbs_info':user_pbs_info}
+    return render(request, 'my_domestic_connection_seven_day.html',context)
+def my_monthly_coordination_meeting(request):
+    current_user=request.user
+    user_id=current_user.id
+    user_pbs_info=PbsInfo.objects.get(user__pk=user_id)
+    pbs_code=user_pbs_info.pbs_code
+    print(pbs_code)
+    my_data=MonthlyCoordinationMeetingInfo.objects.filter(pbs_code=pbs_code)
+    context={'my_data':my_data,'user_pbs_info':user_pbs_info}
+    return render(request, 'my_monthly_coordination_meeting.html',context)
+def my_actin_against_accident(request):
+    current_user=request.user
+    user_id=current_user.id
+    user_pbs_info=PbsInfo.objects.get(user__pk=user_id)
+    pbs_code=user_pbs_info.pbs_code
+    print(pbs_code)
+    my_data=NecessaryActionAgainstAccident.objects.filter(pbs_code=pbs_code)
+    context={'my_data':my_data,'user_pbs_info':user_pbs_info}
+    return render(request, 'my_action_against_accident.html',context)
 
 
 def user_register(request):
