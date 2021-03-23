@@ -13,6 +13,7 @@ class Year(models.Model):
     def __str__(self):
         return str(self.name)
 class ManagementInfo(models.Model):
+    user_name=models.CharField(max_length=250,blank=True,null=True)
     m_name=models.CharField(max_length=100)
     m_id=models.IntegerField(blank=True,null=True)
 

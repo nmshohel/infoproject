@@ -31,10 +31,10 @@
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="#">Settings</a>
-                        <a class="dropdown-item" href="{% url 'change_password' %}">Change Password</a>
-                        <a class="dropdown-item" href="{% url 'user_register' %}">User Register</a>
+                        <a class="dropdown-item" href="{% url 'infoapp:change_password' %}">Change Password</a>
+                        <a class="dropdown-item" href="{% url 'infoapp:user_register' %}">User Register</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{% url 'user_logout' %}">Logout</a>
+                        <a class="dropdown-item" href="{% url 'infoapp:user_logout' %}">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -58,13 +58,21 @@
                             
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{% url 'pbs_info_berc_form' %}">BERC Info</a>
-                                    <a class="nav-link" href="{% url 'industry_comercial_consumer_dc_rc' %}">Industry Commercial Consumer</a>
+                                    <a class="nav-link" href="{% url 'infoapp:pbs_info_berc_form' %}">BERC Info</a>
+                                    <a class="nav-link" href="{% url 'infoapp:industry_comercial_consumer_dc_rc' %}">Industry Commercial Consumer</a>
+                                    <a class="nav-link" href="{% url 'infoapp:dc_consumer' %}">DC Consumer</a>
+                                    <a class="nav-link" href="{% url 'infoapp:connected_consumer' %}">Connected Consumer</a>
+                                    <a class="nav-link" href="{% url 'infoapp:domestic_connection_seven_day' %}">Domestic Connection Seven Days</a>
+                                    <a class="nav-link" href="{% url 'infoapp:monthly_coordination_meeting_info' %}">Coordination Meeting</a>
+                                    <a class="nav-link" href="{% url 'infoapp:necessary_action_against_accident' %}"> Action Against Accident</a>
+
+                                    necessary_action_against_accident
+                                    
 
                                     
-                                    <a class="nav-link" href="{% url 'my_berc_info' %}">My BERC Info</a>
-                                    <a class="nav-link" href="{% url 'new_online_connection' %}">New Connection Info</a>
-                                    <a class="nav-link" href="{% url 'my_new_con_info' %}">My New ConnectionInfo</a>
+                                    <a class="nav-link" href="{% url 'infoapp:my_berc_info' %}">My BERC Info</a>
+                                    <a class="nav-link" href="{% url 'infoapp:new_online_connection' %}">New Connection Info</a>
+                                    <a class="nav-link" href="{% url 'infoapp:my_new_con_info' %}">My New ConnectionInfo</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">

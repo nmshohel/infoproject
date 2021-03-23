@@ -79,6 +79,92 @@ class IndustryCommercialDcRcForm(forms.ModelForm):
             
                  
         } 
+class DcConsumerInfoForm(forms.ModelForm):
+    month = forms.ModelChoiceField(widget=forms.Select(attrs={'class':'form form-control bg-light col-md-6',}), queryset =Month.objects.all())
+    year = forms.ModelChoiceField(widget=forms.Select(attrs={'class':'form form-control bg-light col-md-6',}), queryset =Year.objects.all())
+    class Meta:
+        model= DcConsumerInfo
+        fields=['domestic','month','year','industry','commercial','irrigation','govt_institute','other','total_amount','taken_action']
+
+        widgets={
+            'domestic':forms.NumberInput( attrs={'class':'form form-control bg-light', 'placeholder':"Total Dc"}),
+            'industry':forms.NumberInput(attrs={'class':'form form-control bg-light', 'placeholder':"total app get for rc"}),
+            'commercial':forms.NumberInput( attrs={'class':'form form-control bg-light', 'placeholder':"Colplete rc app"}),
+            'irrigation':forms.NumberInput(attrs={'class':'form form-control bg-light', 'placeholder':"Illegal app for dc"}),
+            'govt_institute':forms.NumberInput( attrs={'class':'form form-control bg-light', 'placeholder':"Total Dc"}),
+            'other':forms.NumberInput(attrs={'class':'form form-control bg-light', 'placeholder':"total app get for rc"}),
+            'total_amount':forms.NumberInput( attrs={'class':'form form-control bg-light', 'placeholder':"Colplete rc app"}),
+            'taken_action':forms.TextInput(attrs={'class':'form form-control bg-light', 'placeholder':"Illegal app for dc"}),         
+        }
+
+class ConnectedConsumerInfoForm(forms.ModelForm):
+    month = forms.ModelChoiceField(widget=forms.Select(attrs={'class':'form form-control bg-light col-md-6',}), queryset =Month.objects.all())
+    year = forms.ModelChoiceField(widget=forms.Select(attrs={'class':'form form-control bg-light col-md-6',}), queryset =Year.objects.all())
+    class Meta:
+        model= ConnectedConsumerInfo
+        fields=['domestic','month','year','industry','commercial','irrigation','govt_institute','other','total_amount','taken_action']
+
+        widgets={
+            'domestic':forms.NumberInput( attrs={'class':'form form-control bg-light', 'placeholder':"Total Dc"}),
+            'industry':forms.NumberInput(attrs={'class':'form form-control bg-light', 'placeholder':"total app get for rc"}),
+            'commercial':forms.NumberInput( attrs={'class':'form form-control bg-light', 'placeholder':"Colplete rc app"}),
+            'irrigation':forms.NumberInput(attrs={'class':'form form-control bg-light', 'placeholder':"Illegal app for dc"}),
+            'govt_institute':forms.NumberInput( attrs={'class':'form form-control bg-light', 'placeholder':"Total Dc"}),
+            'other':forms.NumberInput(attrs={'class':'form form-control bg-light', 'placeholder':"total app get for rc"}),
+            'total_amount':forms.NumberInput( attrs={'class':'form form-control bg-light', 'placeholder':"Colplete rc app"}),
+            'taken_action':forms.TextInput(attrs={'class':'form form-control bg-light', 'placeholder':"Illegal app for dc"}),         
+        }
+class DomesticConnectionSevenDayForm(forms.ModelForm):
+    month = forms.ModelChoiceField(widget=forms.Select(attrs={'class':'form form-control bg-light col-md-6',}), queryset =Month.objects.all())
+    year = forms.ModelChoiceField(widget=forms.Select(attrs={'class':'form form-control bg-light col-md-6',}), queryset =Year.objects.all())
+    class Meta:
+        model= DomesticConnectionSevenDay
+        fields=['total_app','month','year','con_within_seven_day_app','con_without_seven_day_app','process_seven_day_app','reason_not_con_of_seven_day','remarks']
+
+        widgets={
+            'total_app':forms.NumberInput( attrs={'class':'form form-control bg-light', 'placeholder':"Total Dc"}),
+            'con_within_seven_day_app':forms.NumberInput(attrs={'class':'form form-control bg-light', 'placeholder':"total app get for rc"}),
+            'con_without_seven_day_app':forms.NumberInput( attrs={'class':'form form-control bg-light', 'placeholder':"Colplete rc app"}),
+            'process_seven_day_app':forms.NumberInput(attrs={'class':'form form-control bg-light', 'placeholder':"Illegal app for dc"}),
+            'reason_not_con_of_seven_day':forms.TextInput( attrs={'class':'form form-control bg-light', 'placeholder':"Total Dc"}),
+            'remarks':forms.TextInput(attrs={'class':'form form-control bg-light', 'placeholder':"total app get for rc"}),
+            
+        }
+
+class MonthlyCoordinationMeetingInfoForm(forms.ModelForm):
+    month = forms.ModelChoiceField(widget=forms.Select(attrs={'class':'form form-control bg-light col-md-6',}), queryset =Month.objects.all())
+    year = forms.ModelChoiceField(widget=forms.Select(attrs={'class':'form form-control bg-light col-md-6',}), queryset =Year.objects.all())
+    class Meta:
+        model= MonthlyCoordinationMeetingInfo
+        fields=['consumer_meeting_nos','month','year','previous_month_unsolve_objection','current_month_unsolve_objection','total_objection','current_month_solve_objection','unsolve_objection','remarks']
+
+        widgets={
+            'consumer_meeting_nos':forms.NumberInput( attrs={'class':'form form-control bg-light', 'placeholder':"Total Dc"}),
+            'previous_month_unsolve_objection':forms.NumberInput(attrs={'class':'form form-control bg-light', 'placeholder':"total app get for rc"}),
+            'current_month_unsolve_objection':forms.NumberInput( attrs={'class':'form form-control bg-light', 'placeholder':"Colplete rc app"}),
+            'total_objection':forms.NumberInput(attrs={'class':'form form-control bg-light', 'placeholder':"Illegal app for dc"}),
+            'current_month_solve_objection':forms.NumberInput( attrs={'class':'form form-control bg-light', 'placeholder':"Total Dc"}),
+            'unsolve_objection':forms.NumberInput(attrs={'class':'form form-control bg-light', 'placeholder':"total app get for rc"}),
+            'remarks':forms.TextInput(attrs={'class':'form form-control bg-light', 'placeholder':"total app get for rc"}),
+            
+        }
+class NecessaryActionAgainstAccidentForm(forms.ModelForm):
+    month = forms.ModelChoiceField(widget=forms.Select(attrs={'class':'form form-control bg-light col-md-6',}), queryset =Month.objects.all())
+    year = forms.ModelChoiceField(widget=forms.Select(attrs={'class':'form form-control bg-light col-md-6',}), queryset =Year.objects.all())
+    class Meta:
+        model= NecessaryActionAgainstAccident
+        fields=['shift_cable','month','year','install_pole_for_unshift_cable','cover_cable_for_non_install_pole','span_length_sag_visit','risk_unfit_pole_change','pdb_risk_pole_check_change','electric_line_maintainance_by_instraction']
+
+        widgets={
+            'shift_cable':forms.NumberInput( attrs={'class':'form form-control bg-light', 'placeholder':"Total Dc"}),
+            'install_pole_for_unshift_cable':forms.NumberInput(attrs={'class':'form form-control bg-light', 'placeholder':"total app get for rc"}),
+            'cover_cable_for_non_install_pole':forms.NumberInput( attrs={'class':'form form-control bg-light', 'placeholder':"Colplete rc app"}),
+            'span_length_sag_visit':forms.NumberInput(attrs={'class':'form form-control bg-light', 'placeholder':"Illegal app for dc"}),
+            'risk_unfit_pole_change':forms.NumberInput( attrs={'class':'form form-control bg-light', 'placeholder':"Total Dc"}),
+            'pdb_risk_pole_check_change':forms.NumberInput(attrs={'class':'form form-control bg-light', 'placeholder':"total app get for rc"}),
+            'electric_line_maintainance_by_instraction':forms.TextInput(attrs={'class':'form form-control bg-light', 'placeholder':"total app get for rc"}),
+            
+        }
 
 
 
