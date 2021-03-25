@@ -26,10 +26,11 @@ class ManagementInfo(models.Model):
 
 class PbsInfo(models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE)
-    management=models.ForeignKey(ManagementInfo,on_delete=models.CASCADE, blank=True, null=True)
+    # management=models.ForeignKey(ManagementInfo,on_delete=models.CASCADE, blank=True, null=True)
     pbs_name=models.CharField(max_length=50)
     pbs_name_benglai=models.CharField(max_length=50)
     pbs_code=models.IntegerField(blank=True, null= True)
+    management_code=models.IntegerField(blank=True, null=True)
     address=models.TextField(blank=True, null=True)
     mobile_no=models.TextField(blank=True , null=True)
 
@@ -38,6 +39,7 @@ class PbsInfo(models.Model):
     
 class PbsInfoBERC(models.Model):
     pbs_code=models.IntegerField(blank=True, null=True)
+    management_code=models.IntegerField(blank=True,null=True)
     complain_nos=models.CharField(max_length=250, blank=True, null=True)
     month=models.CharField(max_length=10, blank=True, null=True)
     year=models.CharField(max_length=10,blank=True, null=True)
@@ -51,6 +53,7 @@ class PbsInfoBERC(models.Model):
 
 class NewOnlineConnection(models.Model):
     pbs_code=models.IntegerField(blank=True, null=True)
+    management_code=models.IntegerField(blank=True,null=True)
     month=models.CharField(max_length=10, blank=True, null=True)
     year=models.CharField(max_length=10,blank=True, null=True)
     total_app=models.CharField(max_length=250, blank=True,null=True)
@@ -63,6 +66,7 @@ class NewOnlineConnection(models.Model):
 
 class IndustryCommercialDcRc(models.Model):
     pbs_code=models.IntegerField(blank=True, null=True)
+    management_code=models.IntegerField(blank=True,null=True)
     month=models.CharField(max_length=10, blank=True, null=True)
     year=models.CharField(max_length=10,blank=True, null=True)
     total_dc_app=models.CharField(max_length=250, blank=True,null=True)
@@ -75,6 +79,7 @@ class IndustryCommercialDcRc(models.Model):
 
 class DcConsumerInfo(models.Model):
     pbs_code=models.IntegerField(blank=True, null=True)
+    management_code=models.IntegerField(blank=True,null=True)
     month=models.CharField(max_length=10, blank=True, null=True)
     year=models.CharField(max_length=10,blank=True, null=True)
     domestic=models.CharField(max_length=250, blank=True,null=True)
@@ -90,6 +95,7 @@ class DcConsumerInfo(models.Model):
 
 class ConnectedConsumerInfo(models.Model):
     pbs_code=models.IntegerField(blank=True, null=True)
+    management_code=models.IntegerField(blank=True,null=True)
     month=models.CharField(max_length=10, blank=True, null=True)
     year=models.CharField(max_length=10,blank=True, null=True)
     domestic=models.CharField(max_length=250, blank=True,null=True)
@@ -104,6 +110,7 @@ class ConnectedConsumerInfo(models.Model):
         return str(self.pbs_code)
 class DomesticConnectionSevenDay(models.Model):
     pbs_code=models.IntegerField(blank=True, null=True)
+    management_code=models.IntegerField(blank=True,null=True)
     month=models.CharField(max_length=10, blank=True, null=True)
     year=models.CharField(max_length=10,blank=True, null=True)
     total_app=models.CharField(max_length=250, blank=True,null=True)
@@ -118,6 +125,7 @@ class DomesticConnectionSevenDay(models.Model):
 
 class MonthlyCoordinationMeetingInfo(models.Model):
     pbs_code=models.IntegerField(blank=True, null=True)
+    management_code=models.IntegerField(blank=True,null=True)
     month=models.CharField(max_length=10, blank=True, null=True)
     year=models.CharField(max_length=10,blank=True, null=True)
     consumer_meeting_nos=models.CharField(max_length=250, blank=True,null=True)
@@ -133,6 +141,7 @@ class MonthlyCoordinationMeetingInfo(models.Model):
 
 class NecessaryActionAgainstAccident(models.Model):
     pbs_code=models.IntegerField(blank=True, null=True)
+    management_code=models.IntegerField(blank=True,null=True)
     month=models.CharField(max_length=10, blank=True, null=True)
     year=models.CharField(max_length=10,blank=True, null=True)
     shift_cable=models.CharField(max_length=250, blank=True,null=True)

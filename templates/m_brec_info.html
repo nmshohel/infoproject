@@ -1,0 +1,52 @@
+{% extends 'base.html'%}
+
+
+{% block content %}
+
+<div class="card mb-4">
+  <div class="card-header">
+      <i class="fas fa-table mr-1"></i>
+      বিইআরসি কর্তৃক চাহিত অভিযোগ নিস্পন্ন সংক্রান্ত তথ্য
+  </div>
+  <div class="card-body">
+      <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th scope="col">ক্রমিক নং</th>
+                  <th scope="col">পবিসের নাম</th>
+                  <th scope="col">মাস</th>
+                  <th scope="col">বছর</th>
+                  <th scope="col">পবিসের কোড</th>
+                  <th scope="col">অভিযোগ প্রাপ্তির সংখ্যা </th>
+                  <th scope="col">অভিযোগ নিষ্পত্তির সংখ্যা  </th>
+                  <th scope="col">অনিস্পন্ন আবেদন সংখ্যা </th>
+                  <th scope="col">অভিযোগ অনিস্পনের কারণ </th>
+                </tr>
+              </thead>
+ 
+              
+              <tbody>
+                {% for my_data in my_data %}
+           <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ my_data.month }}</td>
+                <td>{{ my_data.year }}</td>
+               
+                <th scope="row">{{ my_data.pbs_code }}</th>
+                <td>{{ my_data.complain_nos }}</td>
+                <td>{{ my_data.complain_solve }}</td>
+                <td>{{ my_data.complain_unsolve_case }}</td>
+                <td>{{ my_data.complain_remark }}</td>
+            </tr>
+            {% endfor %}
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

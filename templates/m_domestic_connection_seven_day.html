@@ -1,0 +1,136 @@
+{% extends 'base.html'%}
+
+
+{% block contentttt %}
+
+
+
+<div class="container">
+    <div class="cow">
+        <table class="table table-striped table-bordered" style="margin-top: 10px;">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">S/N</th>
+                <th scope="col">Month</th>
+                <th scope="col">Year</th>
+                <th scope="col">PBS Code</th>
+                <th scope="col">PBS Name</th>
+                <th scope="col">Total App</th>
+                <th scope="col">With Seven Days</th>
+                <th scope="col">Without Seven Days</th>
+                <th scope="col">process seven Days</th>
+                <th scope="col">Reason for not connection Seven Day</th>
+                <th scope="col">Remarks</th>
+    
+                
+        
+              </tr>
+            </thead>
+            
+            <tbody>
+                {% for my_data in my_data%}
+                {% for i in user_pbs_management_info%}
+              <tr>
+                <th>{{ forloop.counter }}</th>
+                <td>{{ my_data.month }}</td>
+                <td>{{ my_data.year }}</td>
+                <th scope="row">{{ my_data.pbs_code }}</th>
+                <td>{{ i.pbs_name }}</td>
+                <td>{{ my_data.total_app }}</td>
+                <td>{{ my_data.con_within_seven_day_app }}</td>
+                <td>{{ my_data.con_without_seven_day_app }}</td>
+                <td>{{ my_data.process_seven_day_app }}</td>
+                <td>{{ my_data.reason_not_con_of_seven_day }}</td>
+                <td>{{ my_data.remarks }}</td>
+                
+                
+              </tr>
+              {% endfor %}
+              {% endfor %}
+        
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% block content %}
+<div class="card mb-4">
+  <div class="card-header">
+      <i class="fas fa-table mr-1"></i>
+      ০৭ দিনের মধ্যে আবাসিক সংযোগ নিশ্চিত করন এর তথ্যাদি
+  </div>
+  <div class="card-body">
+      <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th scope="col">ক্রমিক নং</th>
+                  <th scope="col">মাস</th>
+                  <th scope="col">বছর</th>
+                  <th scope="col">পবিসের কোড</th>
+                  <th scope="col">পবিসের নাম</th>
+                  <th scope="col">আবাসিক সংযোগের জন্য প্রাপ্ত মোট আবেদন সংখ্যা </th>
+                  <th scope="col">আবেদনের ০৭ দিনের মধ্যে প্রদানকৃত সংযোগ(টি)</th>
+                  <th scope="col">আবেদনের ০৭ অধিক সময়ে প্রদানকৃত সংযোগ(টি)</th>
+                  <th scope="col">আবেদনের তারিখ হতে ০৭ দিনের মধ্যে প্রক্রিয়াধীন আবেদনের সংখ্যা(টি)</th>
+                  <th scope="col">০৭ দিনের মধ্যে সংযোগ না হওয়ার কারণ </th>
+                  <th scope="col">মন্তব্য </th>
+      
+                  
+          
+                </tr>
+              </thead>
+
+              
+              <tbody>
+                {% for my_data in my_data%}
+                {% for i in user_pbs_management_info%}
+              <tr>
+                <th>{{ forloop.counter }}</th>
+                <td>{{ my_data.month }}</td>
+                <td>{{ my_data.year }}</td>
+                <th scope="row">{{ my_data.pbs_code }}</th>
+                <td>{{ i.pbs_name }}</td>
+                <td>{{ my_data.total_app }}</td>
+                <td>{{ my_data.con_within_seven_day_app }}</td>
+                <td>{{ my_data.con_without_seven_day_app }}</td>
+                <td>{{ my_data.process_seven_day_app }}</td>
+                <td>{{ my_data.reason_not_con_of_seven_day }}</td>
+                <td>{{ my_data.remarks }}</td>
+                
+                
+              </tr>
+              {% endfor %}
+              {% endfor %}
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

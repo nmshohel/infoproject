@@ -55,10 +55,32 @@ def pbs_info(request):
 
 
 def pbs_info_berc_form(request):
+    
     if request.method=='POST':
+        
         current_user=request.user
         user_id=current_user.id
         user_pbs_info=PbsInfo.objects.get(user__pk=user_id)
+        # print(user_pbs_info.management_code)
+        # print(user_pbs_info.management__management_code)
+        # print(user_id)
+        # u_management_code=PbsInfo.objects.get(management__management_code=user_id)
+
+
+
+        # user_management_info=ManagementInfo.objects.get(management_code=1)
+        # print(user_management_info.name)
+        
+
+
+        # management_info=PbsInfo.objects.filter(management__management_code='1')
+      
+        # print(management_info.management.name)
+        # print(management_info__management_code)
+
+        # print(management_info.management)
+        # user_management_info=ManagementInfo.objects.get()
+
         month_id=request.POST['month']
         year_id=request.POST['year']
         month=Month.objects.get(id=month_id)
@@ -73,7 +95,7 @@ def pbs_info_berc_form(request):
         com_unsolve_case=request.POST.get('complain_unsolve_case')
         com_remarks=request.POST.get('complain_remark')
 
-        PbsInfoBERC.objects.create(pbs_code=user_pbs_info.pbs_code,complain_nos = comp_nos, complain_solve = comp_solve,complain_unsolve_case=com_unsolve_case,complain_remark=com_remarks,month=month,year=year)
+        PbsInfoBERC.objects.create(pbs_code=user_pbs_info.pbs_code,management_code=user_pbs_info.management_code,complain_nos = comp_nos, complain_solve = comp_solve,complain_unsolve_case=com_unsolve_case,complain_remark=com_remarks,month=month,year=year)
         berc_form= PbsInfoBERCForm()
         message = "Information Successfully Added!"
         context = {'berc_form':berc_form, 'message':message}
@@ -95,7 +117,7 @@ def new_online_connection(request):
         u_total_solve_app=request.POST.get('total_solve_app')
         u_cause_of_unsolve=request.POST.get('cause_of_unsolve')
         u_remark=request.POST.get('remark')
-        NewOnlineConnection.objects.create(pbs_code=user_pbs_info.pbs_code,total_app = u_total_app, total_solve_app = u_total_solve_app,cause_of_unsolve=u_cause_of_unsolve,remark=u_remark,month=month,year=year)
+        NewOnlineConnection.objects.create(pbs_code=user_pbs_info.pbs_code,management_code=user_pbs_info.management_code,total_app = u_total_app, total_solve_app = u_total_solve_app,cause_of_unsolve=u_cause_of_unsolve,remark=u_remark,month=month,year=year)
         new_con_form= NewOnlineConnectionForm()
         message = "Information Successfully Added!"
         context = {'new_con_form':new_con_form, 'message':message}
@@ -118,7 +140,7 @@ def industry_comercial_consumer_dc_rc(request):
         u_total_app_get_for_rc=request.POST.get('total_app_get_for_rc')
         u_complete_rc_app=request.POST.get('complete_rc_app')
         u_illegal_app_for_dc=request.POST.get('illegal_app_for_dc')
-        IndustryCommercialDcRc.objects.create(pbs_code=user_pbs_info.pbs_code,total_dc_app = u_total_dc_app, complete_rc_app = u_complete_rc_app,illegal_app_for_dc=u_illegal_app_for_dc,total_app_get_for_rc=u_total_app_get_for_rc,month=month,year=year)
+        IndustryCommercialDcRc.objects.create(pbs_code=user_pbs_info.pbs_code,management_code=user_pbs_info.management_code,total_dc_app = u_total_dc_app, complete_rc_app = u_complete_rc_app,illegal_app_for_dc=u_illegal_app_for_dc,total_app_get_for_rc=u_total_app_get_for_rc,month=month,year=year)
         new_form= IndustryCommercialDcRcForm()
         message = "Information Successfully Added!"
         context = {'new_form':new_form, 'message':message}
@@ -146,7 +168,7 @@ def dc_consumer(request):
         other=request.POST.get('other')
         total_amount=request.POST.get('total_amount')
         taken_action=request.POST.get('taken_action')
-        DcConsumerInfo.objects.create(pbs_code=user_pbs_info.pbs_code,domestic = domestic, industry = industry,commercial=commercial,irrigation=irrigation,month=month,year=year,govt_institute=govt_institute,other=other,total_amount=total_amount,taken_action=taken_action)
+        DcConsumerInfo.objects.create(pbs_code=user_pbs_info.pbs_code,management_code=user_pbs_info.management_code,domestic = domestic, industry = industry,commercial=commercial,irrigation=irrigation,month=month,year=year,govt_institute=govt_institute,other=other,total_amount=total_amount,taken_action=taken_action)
         new_form= DcConsumerInfoForm()
         message = "Information Successfully Added!"
         context = {'new_form':new_form, 'message':message}
@@ -173,7 +195,7 @@ def connected_consumer(request):
         other=request.POST.get('other')
         total_amount=request.POST.get('total_amount')
         taken_action=request.POST.get('taken_action')
-        ConnectedConsumerInfo.objects.create(pbs_code=user_pbs_info.pbs_code,domestic = domestic, industry = industry,commercial=commercial,irrigation=irrigation,month=month,year=year,govt_institute=govt_institute,other=other,total_amount=total_amount,taken_action=taken_action)
+        ConnectedConsumerInfo.objects.create(pbs_code=user_pbs_info.pbs_code,management_code=user_pbs_info.management_code,domestic = domestic, industry = industry,commercial=commercial,irrigation=irrigation,month=month,year=year,govt_institute=govt_institute,other=other,total_amount=total_amount,taken_action=taken_action)
         new_form= ConnectedConsumerInfoForm()
         message = "Information Successfully Added!"
         context = {'new_form':new_form, 'message':message}
@@ -199,7 +221,7 @@ def domestic_connection_seven_day(request):
         process_seven_day_app=request.POST.get('process_seven_day_app')
         reason_not_con_of_seven_day=request.POST.get('reason_not_con_of_seven_day')
         remarks=request.POST.get('remarks')
-        DomesticConnectionSevenDay.objects.create(pbs_code=user_pbs_info.pbs_code,total_app = total_app, con_within_seven_day_app = con_within_seven_day_app,con_without_seven_day_app=con_without_seven_day_app,process_seven_day_app=process_seven_day_app,month=month,year=year,reason_not_con_of_seven_day=reason_not_con_of_seven_day,remarks=remarks)
+        DomesticConnectionSevenDay.objects.create(pbs_code=user_pbs_info.pbs_code,management_code=user_pbs_info.management_code,total_app = total_app, con_within_seven_day_app = con_within_seven_day_app,con_without_seven_day_app=con_without_seven_day_app,process_seven_day_app=process_seven_day_app,month=month,year=year,reason_not_con_of_seven_day=reason_not_con_of_seven_day,remarks=remarks)
         new_form= DomesticConnectionSevenDayForm()
         message = "Information Successfully Added!"
         context = {'new_form':new_form, 'message':message}
@@ -225,7 +247,7 @@ def monthly_coordination_meeting_info(request):
         current_month_solve_objection=request.POST.get('current_month_solve_objection')
         unsolve_objection=request.POST.get('unsolve_objection')
         remarks=request.POST.get('remarks')
-        MonthlyCoordinationMeetingInfo.objects.create(pbs_code=user_pbs_info.pbs_code,consumer_meeting_nos = consumer_meeting_nos, previous_month_unsolve_objection = previous_month_unsolve_objection,current_month_unsolve_objection=current_month_unsolve_objection,total_objection=total_objection,month=month,year=year,current_month_solve_objection=current_month_solve_objection,remarks=remarks,unsolve_objection=unsolve_objection)
+        MonthlyCoordinationMeetingInfo.objects.create(pbs_code=user_pbs_info.pbs_code,management_code=user_pbs_info.management_code,consumer_meeting_nos = consumer_meeting_nos, previous_month_unsolve_objection = previous_month_unsolve_objection,current_month_unsolve_objection=current_month_unsolve_objection,total_objection=total_objection,month=month,year=year,current_month_solve_objection=current_month_solve_objection,remarks=remarks,unsolve_objection=unsolve_objection)
         new_form= MonthlyCoordinationMeetingInfoForm()
         message = "Information Successfully Added!"
         context = {'new_form':new_form, 'message':message}
@@ -251,7 +273,7 @@ def necessary_action_against_accident(request):
         risk_unfit_pole_change=request.POST.get('risk_unfit_pole_change')
         pdb_risk_pole_check_change=request.POST.get('pdb_risk_pole_check_change')
         electric_line_maintainance_by_instraction=request.POST.get('electric_line_maintainance_by_instraction')
-        NecessaryActionAgainstAccident.objects.create(pbs_code=user_pbs_info.pbs_code,shift_cable = shift_cable, install_pole_for_unshift_cable = install_pole_for_unshift_cable,cover_cable_for_non_install_pole=cover_cable_for_non_install_pole,span_length_sag_visit=span_length_sag_visit,month=month,year=year,risk_unfit_pole_change=risk_unfit_pole_change,pdb_risk_pole_check_change=pdb_risk_pole_check_change,electric_line_maintainance_by_instraction=electric_line_maintainance_by_instraction)
+        NecessaryActionAgainstAccident.objects.create(pbs_code=user_pbs_info.pbs_code,management_code=user_pbs_info.management_code,shift_cable = shift_cable, install_pole_for_unshift_cable = install_pole_for_unshift_cable,cover_cable_for_non_install_pole=cover_cable_for_non_install_pole,span_length_sag_visit=span_length_sag_visit,month=month,year=year,risk_unfit_pole_change=risk_unfit_pole_change,pdb_risk_pole_check_change=pdb_risk_pole_check_change,electric_line_maintainance_by_instraction=electric_line_maintainance_by_instraction)
         new_form= NecessaryActionAgainstAccidentForm()
         message = "Information Successfully Added!"
         context = {'new_form':new_form, 'message':message}
@@ -286,6 +308,15 @@ def my_berc_info(request):
     context={'my_data':my_data,'user_pbs_info':user_pbs_info}
     return render(request, 'my_brec_info.html',context)
 
+def m_berc_info(request):
+    current_user=request.user
+    user_id=current_user.id
+    user_management_info=ManagementInfo.objects.get(user__pk=user_id)
+    user_pbs_management_info=PbsInfo.objects.filter(management_code=user_management_info.management_code)
+    my_data=PbsInfoBERC.objects.filter(management_code=user_management_info.management_code)
+    context={'my_data':my_data,'user_pbs_management_info':user_pbs_management_info}
+    return render(request, 'm_brec_info.html',context)
+
 
 def my_new_con_info(request):
     current_user=request.user
@@ -296,6 +327,14 @@ def my_new_con_info(request):
     my_data=NewOnlineConnection.objects.filter(pbs_code=pbs_code)
     context={'my_data':my_data,'user_pbs_info':user_pbs_info}
     return render(request, 'my_new_con_info.html',context)
+def m_new_con_info(request):
+    current_user=request.user
+    user_id=current_user.id
+    user_management_info=ManagementInfo.objects.get(user__pk=user_id)
+    user_pbs_management_info=PbsInfo.objects.filter(management_code=user_management_info.management_code)
+    my_data=NewOnlineConnection.objects.filter(management_code=user_management_info.management_code)
+    context={'my_data':my_data,'user_pbs_management_info':user_pbs_management_info}
+    return render(request, 'm_new_con_info.html',context)
 def my_industry_commercial_dc_rc(request):
     current_user=request.user
     user_id=current_user.id
@@ -305,6 +344,15 @@ def my_industry_commercial_dc_rc(request):
     my_data=IndustryCommercialDcRc.objects.filter(pbs_code=pbs_code)
     context={'my_data':my_data,'user_pbs_info':user_pbs_info}
     return render(request, 'my_industry_commercial_dc_rc.html',context)
+def m_industry_commercial_dc_rc(request):
+    current_user=request.user
+    user_id=current_user.id
+    user_management_info=ManagementInfo.objects.get(user__pk=user_id)
+    user_pbs_management_info=PbsInfo.objects.filter(management_code=user_management_info.management_code)
+    my_data=IndustryCommercialDcRc.objects.filter(management_code=user_management_info.management_code)
+    context={'my_data':my_data,'user_pbs_management_info':user_pbs_management_info}
+    return render(request, 'm_industry_commercial_dc_rc.html',context)
+
 def my_dc_consumer(request):
     current_user=request.user
     user_id=current_user.id
@@ -314,6 +362,16 @@ def my_dc_consumer(request):
     my_data=DcConsumerInfo.objects.filter(pbs_code=pbs_code)
     context={'my_data':my_data,'user_pbs_info':user_pbs_info}
     return render(request, 'my_dc_consumer.html',context)
+
+def m_dc_consumer(request):
+    current_user=request.user
+    user_id=current_user.id
+    user_management_info=ManagementInfo.objects.get(user__pk=user_id)
+    user_pbs_management_info=PbsInfo.objects.filter(management_code=user_management_info.management_code)
+    my_data=DcConsumerInfo.objects.filter(management_code=user_management_info.management_code)
+    context={'my_data':my_data,'user_pbs_management_info':user_pbs_management_info}
+    return render(request, 'm_dc_consumer.html',context)
+
 def my_connected_consumer(request):
     current_user=request.user
     user_id=current_user.id
@@ -323,6 +381,17 @@ def my_connected_consumer(request):
     my_data=ConnectedConsumerInfo.objects.filter(pbs_code=pbs_code)
     context={'my_data':my_data,'user_pbs_info':user_pbs_info}
     return render(request, 'my_connected_consumer.html',context)
+def m_connected_consumer(request):
+    current_user=request.user
+    user_id=current_user.id
+    user_management_info=ManagementInfo.objects.get(user__pk=user_id)
+    user_pbs_management_info=PbsInfo.objects.filter(management_code=user_management_info.management_code)
+    my_data=ConnectedConsumerInfo.objects.filter(management_code=user_management_info.management_code)
+
+    context={'user_pbs_management_info':user_pbs_management_info}
+
+    return render(request, 'm_connected_consumer.html',context)
+
 def my_domestic_connection_seven_day(request):
     current_user=request.user
     user_id=current_user.id
@@ -332,6 +401,16 @@ def my_domestic_connection_seven_day(request):
     my_data=DomesticConnectionSevenDay.objects.filter(pbs_code=pbs_code)
     context={'my_data':my_data,'user_pbs_info':user_pbs_info}
     return render(request, 'my_domestic_connection_seven_day.html',context)
+
+def m_domestic_connection_seven_day(request):
+    current_user=request.user
+    user_id=current_user.id
+    user_management_info=ManagementInfo.objects.get(user__pk=user_id)
+    user_pbs_management_info=PbsInfo.objects.filter(management_code=user_management_info.management_code)
+    my_data=DomesticConnectionSevenDay.objects.filter(management_code=user_management_info.management_code)
+    context={'my_data':my_data,'user_pbs_management_info':user_pbs_management_info}
+    return render(request, 'm_domestic_connection_seven_day.html',context)
+
 def my_monthly_coordination_meeting(request):
     current_user=request.user
     user_id=current_user.id
@@ -341,6 +420,15 @@ def my_monthly_coordination_meeting(request):
     my_data=MonthlyCoordinationMeetingInfo.objects.filter(pbs_code=pbs_code)
     context={'my_data':my_data,'user_pbs_info':user_pbs_info}
     return render(request, 'my_monthly_coordination_meeting.html',context)
+
+def m_monthly_coordination_meeting(request):
+    current_user=request.user
+    user_id=current_user.id
+    user_management_info=ManagementInfo.objects.get(user__pk=user_id)
+    user_pbs_management_info=PbsInfo.objects.filter(management_code=user_management_info.management_code)
+    my_data=MonthlyCoordinationMeetingInfo.objects.filter(management_code=user_management_info.management_code)
+    context={'my_data':my_data,'user_pbs_management_info':user_pbs_management_info}
+    return render(request, 'm_monthly_coordination_meeting.html',context)
 def my_actin_against_accident(request):
     current_user=request.user
     user_id=current_user.id
@@ -350,6 +438,15 @@ def my_actin_against_accident(request):
     my_data=NecessaryActionAgainstAccident.objects.filter(pbs_code=pbs_code)
     context={'my_data':my_data,'user_pbs_info':user_pbs_info}
     return render(request, 'my_action_against_accident.html',context)
+
+def m_actin_against_accident(request):
+    current_user=request.user
+    user_id=current_user.id
+    user_management_info=ManagementInfo.objects.get(user__pk=user_id)
+    user_pbs_management_info=PbsInfo.objects.filter(management_code=user_management_info.management_code)
+    my_data=NecessaryActionAgainstAccident.objects.filter(management_code=user_management_info.management_code)
+    context={'my_data':my_data,'user_pbs_management_info':user_pbs_management_info}
+    return render(request, 'm_actin_against_accident.html',context)
 
 
 def user_register(request):
@@ -361,6 +458,8 @@ def user_register(request):
         u_email=request.POST.get('email')
 
         management_id=request.POST['management']
+        print("management id:")
+        print(management_id)
 
         management=ManagementInfo.objects.get(id=management_id)
         # m_id=request.POST.get('management_id')
@@ -371,7 +470,7 @@ def user_register(request):
         u_address=request.POST.get('address')
         u_mob_no=request.POST.get('mobile_no')
         user=User.objects.create_user(first_name=u_first_name, last_name=u_last_name, username=user_name, password=user_pass, email=u_email)
-        pbsinfo_user=PbsInfo.objects.create(user=user,management = management, pbs_name = u_pbs_name,pbs_name_benglai=u_pbs_name_benglai,pbs_code=u_pbs_code,address=u_address,mobile_no=u_mob_no)
+        pbsinfo_user=PbsInfo.objects.create(user=user,management_code = management_id, pbs_name = u_pbs_name,pbs_name_benglai=u_pbs_name_benglai,pbs_code=u_pbs_code,address=u_address,mobile_no=u_mob_no)
         register_form=UserForm()
         pbs_info_register_form= PBSInfoForm()
         message="User Successfully Added"

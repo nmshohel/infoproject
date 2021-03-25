@@ -1,0 +1,64 @@
+{% extends 'base.html'%}
+
+
+
+{% block content %}
+<div class="card mb-4">
+  <div class="card-header">
+      <i class="fas fa-table mr-1"></i>
+      পল্লী বিদ্যুৎ সমিতির বৈদ্যুতিক দুর্ঘটনায় প্রতিরোধে করণীয়
+  </div>
+  <div class="card-body">
+      <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>ক্রমিক নং</th>
+                  <th>মাস</th>
+                  <th>বছর</th>
+                  <th>পবিসের কোড</th>
+                  <th>পবিসের নাম</th>
+                  <th>বিভিন্ন স্থাপনার উপর দিয়ে টানানো তার দ্রুত স্থানান্তরের ব্যবস্থা গ্রহণ করা হয়েছে কিনা</th>
+                  <th>স্থানান্তরের সুযোগ না থাকলে যথাযথ উচ্চতাসম্পন্ন পোল স্থাপনের ব্যবস্থা করা হয়েছে কিনা </th>
+                  <th>লাইন স্থানান্তরের সুযোগ না থাকলে কভার তার ব্যবহৃত হচ্ছে কিনা</th>
+                  <th>স্প্যান লেন্থ এবং স্যাগ নিয়মিত পরিদর্শন করে সমস্যা থাকলে দ্রুত সমাধানের ব্যবস্থা করা হয়েছে কিনা </th>
+                  <th>ঝুঁকিপূর্ণ ও ব্যবহার অনুপযোগী পোল দ্রুত পরিবর্তনের ব্যবস্থা গ্রহণ করা হয়েছে কিনা </th>
+                  <th>পিডিবি হতে অধিগ্রহণকৃত এবং পুরাতন পরিক্ষা-নিরীক্ষা পূর্বক খুঁজে করে দ্রুত সংস্কারের ব্যবস্থা গ্রহন করা হয়েছে কিনা </th>
+  
+                  
+                  <th>বৈদ্যুতিক লাইন সমুহ পবিস নির্দেশিকা অনুযায়ী নিয়মিত রক্ষণাবেক্ষণ করা হচ্ছে কিনা</th>
+      
+                  
+          
+                </tr>
+              </thead>
+
+              
+              <tbody>
+                {% for my_data in my_data%}
+                {% for i in user_pbs_management_info%}
+              <tr>
+                <th>{{ forloop.counter }}</th>
+                <td>{{ my_data.month }}</td>
+                <td>{{ my_data.year }}</td>
+                <th scope="row">{{ my_data.pbs_code }}</th>
+                <td>{{ i.pbs_name }}</td>
+                <td>{{ my_data.shift_cable }}</td>
+                <td>{{ my_data.install_pole_for_unshift_cable }}</td>
+                <td>{{ my_data.cover_cable_for_non_install_pole }}</td>
+                <td>{{ my_data.span_length_sag_visit }}</td>
+                <td>{{ my_data.risk_unfit_pole_change }}</td>
+                <td>{{ my_data.pdb_risk_pole_check_change }}</td>
+                <td>{{ my_data.electric_line_maintainance_by_instraction }}</td>
+                
+                
+              </tr>
+              {% endfor %}
+              {% endfor %}
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+
+{% endblock %}

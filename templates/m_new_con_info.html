@@ -1,0 +1,78 @@
+{% extends 'base.html'%}
+
+
+{% block content %}
+<div class="card mb-4">
+  <div class="card-header">
+      <i class="fas fa-table mr-1"></i>
+      বিদ্যুৎ বিভাগের আওতাধীন সকল বিতরণসংস্থা /কোম্পানির নতুন বিদ্যুৎ সংযোগ প্রদানের ক্ষেত্রে অনলাইনে আবেদন নিষ্পত্তির তথ্য
+  </div>
+  <div class="card-body">
+      <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th scope="col">ক্রমিক নং</th>
+                  <th scope="col">মাস</th>
+                  <th scope="col">বছর</th>
+                  <th scope="col">পবিসের কোড</th>
+                  <th scope="col">পবিসের নাম</th>
+                  <th scope="col">নতুন বিদ্যুৎ সংযোগের ক্ষেত্রে অনলাইন এ প্রাপ্ত আবেদনের সংখ্যা </th>
+                  <th scope="col">নতুন বিদ্যুৎ সংযোগের ক্ষেত্রে অনলাইন এ প্রাপ্ত নিস্পন্ন আবেদনের সংখ্যা </th>
+                  <th scope="col">নতুন বিদ্যুৎ সংযোগের ক্ষেত্রে অনলাইন এ প্রাপ্ত অনিস্পন্ন আবেদনের সংখ্যা </th>
+                  <th scope="col">অনিস্পন্ন থাকলে তার কারণ /th>
+                  
+          
+                </tr>
+              </thead>
+
+              
+              <tbody>
+                {% for my_data in my_data%}
+                {% for i in user_pbs_management_info%}
+              <tr>
+                <th>{{ forloop.counter }}</th>
+                <td>{{ my_data.month }}</td>
+                <td>{{ my_data.year }}</td>
+                <th scope="row">{{ my_data.pbs_code }}</th>
+                <td>{{ i.pbs_name }}</td>
+                <td>{{ my_data.total_app }}</td>
+                <td>{{ my_data.total_solve_app }}</td>
+                <td>{{ my_data.cause_of_unsolve }}</td>
+                <td>{{ my_data.remark }}</td>
+                
+                
+              </tr>
+              {% endfor %}
+              {% endfor %}
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

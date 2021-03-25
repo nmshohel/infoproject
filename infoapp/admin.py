@@ -5,7 +5,7 @@ class ManagementInfoadmin(admin.ModelAdmin):
     list_display=('name','name_bengali','management_status','management_code')
 
 class PbsInfoadmin(admin.ModelAdmin):
-    list_display=('user','management_id','pbs_code','mobile_no')
+    list_display=('user','management_code','pbs_code','mobile_no')
 
 class PbsInfoBERCadmin(admin.ModelAdmin):
     list_display=('pbs_code','complain_nos','complain_solve','complain_unsolve_case','complain_remark')

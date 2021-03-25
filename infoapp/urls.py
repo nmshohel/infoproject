@@ -29,6 +29,34 @@ urlpatterns = [
     path('connected-consumer', views.connected_consumer , name='connected_consumer'),
     path('domestic-connection-seven-day', views.domestic_connection_seven_day , name='domestic_connection_seven_day'),
     path('necessary-action-against-accident', views.necessary_action_against_accident , name='necessary_action_against_accident'),
+    path('m-berc-info', views.m_berc_info , name='m_berc_info'),
+    path('m-new-con-info', views.m_new_con_info , name='m_new_con_info'),
+    path('m-industry-commercial-dc-rc', views.m_industry_commercial_dc_rc , name='m_industry_commercial_dc_rc'),
+    path('m-dc-consumer', views.m_dc_consumer , name='m_dc_consumer'),
+    path('m-connected-consumer', views.m_connected_consumer , name='m_connected_consumer'),
+    path('m-domestic-connection-seven-day', views.m_domestic_connection_seven_day , name='m_domestic_connection_seven_day'),
+    path('m-monthly-coordination-meeting', views.m_monthly_coordination_meeting , name='m_monthly_coordination_meeting'),
+    path('m-actin-against-accident', views.m_actin_against_accident , name='m_actin_against_accident'),
+
+    
+
+
+
+    
+
+    
+
+
+
+
+
+
+    
+
+    
+
+
+    
 
 
     
