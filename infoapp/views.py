@@ -6,6 +6,7 @@ from infoapp.models import *
 from infoapp.forms import *
 # from django import bangla
 from django.core.mail import send_mail
+import random
 # Create your views here.
 
 
@@ -16,9 +17,23 @@ def user_login(request):
         username=request.POST['uname1']
         password=request.POST['pwd1']
         user = authenticate(username = username, password = password)
+        # print(user.staff_status)
         if user:
             login(request, user)
-            return redirect('/home-page')
+            
+            try:
+                m_user=ManagementInfo.objects.get(user=user)
+                print(m_user.management_status)
+                m_status=m_user.management_status
+                # return redirect('/home-page')
+                context={'m_status':m_status}
+                return render(request, 'home_page.html',context)
+            except:
+                p_user=PbsInfo.objects.get(user=user)
+                print(p_user.pbs_code)
+               
+                return  redirect('/home-page')
+            
 
     return render(request,'user_login.html')
 
@@ -28,15 +43,64 @@ def user_logout(request):
     return redirect('/')
 
 def forgot_password(request):
+    return render(request,'forgot_password.html')
+    # if request.method=='POST':
+    #     username=request.POST['uname1']
+    #     print(username)
+    #     context={}
+    #     return(request, 'otp.html',context)
+
+
+    # return(request, 'otp.html',)
+    
     # if request.method=='POST':
     #     u_email=request.POST.get('uname1')
-    send_mail('dffdgvfg','fgghgfhg','nur.mohammad525452@gmail.com',['sunampbs@gmail.com'])
+    # send_mail('dffdgvfg','fgghgfhg','nur.mohammad525452@gmail.com',['sunampbs@gmail.com'])
         # user=User.objects.get
         # print(u_email)
         # msg="Please Check your email"
         # context={'msg':msg}
-    return HttpResponse("OK")
-    # return render(request, 'forgot_password.html')
+
+def forgot_password2(request):
+    if request.method=='POST':
+        username=request.POST['uname1']
+    try:
+        user=User.objects.get(username=username)
+        global f_u_email
+        f_u_email=user.email
+        
+        n = str(random.randint(1000,9999))
+        
+        otp=Otp.objects.create(name=n)
+        send_mail('OTP',n,'nur.mohammad525452@gmail.com',[f_u_email])
+        return render(request, 'otp.html')
+    except:
+        return HttpResponse("User Not Found")
+
+def forgot_password3(request):
+    if request.method=='POST':
+        u_otp=request.POST['otp']
+    try:
+        user=Otp.objects.get(name=u_otp,status=True)
+        
+        if user:
+            user.status=False
+            user.save()
+            return render(request, 'new_password.html')
+    except:
+        return HttpResponse("Wrong Otp")
+
+def forgot_password4(request):
+    if request.method=='POST':
+        np=request.POST.get('new_password')
+        print(np)
+        print(f_u_email)
+        user = User.objects.get(email=f_u_email)
+        user.set_password(np)
+        user.save()
+        return redirect('/')
+
+    
 
 def home_page(request):
     print('hello')

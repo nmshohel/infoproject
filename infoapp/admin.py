@@ -12,6 +12,8 @@ class PbsInfoBERCadmin(admin.ModelAdmin):
 
 class NewOnlineConnectionadmin(admin.ModelAdmin):
     list_display=('pbs_code','total_app','total_solve_app','cause_of_unsolve','remark')
+class Otpadmin(admin.ModelAdmin):
+    list_display=('name','status')
 # Register your models here.
 
 admin.site.register(NewOnlineConnection,NewOnlineConnectionadmin)
@@ -26,5 +28,6 @@ admin.site.register(Year)
 admin.site.register(PbsInfo,PbsInfoadmin)
 admin.site.register(ManagementInfo,ManagementInfoadmin)
 admin.site.register(PbsInfoBERC,PbsInfoBERCadmin)
+admin.site.register(Otp,Otpadmin)
 
 

@@ -12,6 +12,11 @@ class Year(models.Model):
     name=models.CharField(max_length=20, blank=True, null=True)
     def __str__(self):
         return str(self.name)
+class Otp(models.Model):
+    name=models.CharField(max_length=20,blank=True,null=True)
+    status=models.BooleanField(default=True, blank=True,null=True)
+    def __str__(self):
+        return self.name
 class ManagementInfo(models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE)
     name=models.CharField(max_length=100)

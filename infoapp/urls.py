@@ -6,6 +6,9 @@ from infoapp import views
 app_name = 'infoapp'
 urlpatterns = [
     path('forgot-password', views.forgot_password, name='forgot_password'),
+    path('forgot-password2', views.forgot_password2, name='forgot_password2'),
+    path('forgot_password3', views.forgot_password3, name='forgot_password3'),
+    path('forgot_password4', views.forgot_password4, name='forgot_password4'),
     path('logout', views.user_logout, name='user_logout'),
     path('', views.user_login , name='user_login'),
     path('home-page', views.home_page , name='home_page'),
