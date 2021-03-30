@@ -44,22 +44,6 @@ def user_logout(request):
 
 def forgot_password(request):
     return render(request,'forgot_password.html')
-    # if request.method=='POST':
-    #     username=request.POST['uname1']
-    #     print(username)
-    #     context={}
-    #     return(request, 'otp.html',context)
-
-
-    # return(request, 'otp.html',)
-    
-    # if request.method=='POST':
-    #     u_email=request.POST.get('uname1')
-    # send_mail('dffdgvfg','fgghgfhg','nur.mohammad525452@gmail.com',['sunampbs@gmail.com'])
-        # user=User.objects.get
-        # print(u_email)
-        # msg="Please Check your email"
-        # context={'msg':msg}
 
 def forgot_password2(request):
     if request.method=='POST':
