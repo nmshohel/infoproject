@@ -41,10 +41,10 @@ class UserForm(forms.ModelForm):
             'last_name':forms.TextInput(attrs={'class':'rounded form form-control bg-light col-md-8'}),    
         }
         labels={
-            'username':'আবাসিক',
-            'email':'শিল্প',
-            'first_name':'বানিজ্যিক',
-            'first_name':'সেচ' 
+            'username':'Username',
+            'email':'Email',
+            'first_name':'First Name',
+            'last_name':'Last Name' 
         }
 class PBSInfoForm(forms.ModelForm):
     management = forms.ModelChoiceField(widget=forms.Select(attrs={'class':'rounded form form-control bg-light col-md-8',}), queryset =ManagementInfo.objects.all())
@@ -60,11 +60,11 @@ class PBSInfoForm(forms.ModelForm):
             'pbs_code':forms.NumberInput(attrs={'class':'rounded form form-control bg-light col-md-8'}),    
         }
         labels={
-            'pbs_name':'আবাসিক',
-            'pbs_name_benglai':'শিল্প',
-            'address':'বানিজ্যিক',
-            'mobile_no':'সেচ',
-            'pbs_code':'সরকারী প্রতিষ্ঠান' 
+            'pbs_name':'PBS Name',
+            'pbs_name_benglai':'PBS Name Bengali',
+            'address':'Address',
+            'mobile_no':'Mobile No',
+            'pbs_code':'PBS Code' 
         }
 
 class NewOnlineConnectionForm(forms.ModelForm):

@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect,HttpResponse
 from django.contrib.auth import login,logout,authenticate
-from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User,Group
 from django.db import models
 from infoapp.models import *
 from infoapp.forms import *
@@ -101,7 +102,7 @@ def loged_user(request):
 def pbs_info(request):
     return render(request, 'home_page.html',context)
 
-
+@login_required(login_url='/')
 def pbs_info_berc_form(request):
     
     if request.method=='POST':
@@ -152,6 +153,7 @@ def pbs_info_berc_form(request):
         berc_form=PbsInfoBERCForm()
         context={'berc_form':berc_form}
         return render(request,'berc_form.html',context)
+@login_required(login_url='/')
 def new_online_connection(request):
     if request.method=='POST':
         current_user=request.user
@@ -175,6 +177,7 @@ def new_online_connection(request):
         context={'new_con_form':new_con_form}
         return render(request,'new_online_connection.html',context)
 
+@login_required(login_url='/')
 def industry_comercial_consumer_dc_rc(request):
     if request.method=='POST':
         current_user=request.user
@@ -198,7 +201,7 @@ def industry_comercial_consumer_dc_rc(request):
         context={'new_form':new_form}
         return render(request,'industry_commercial_consumer.html',context)
 
-
+@login_required(login_url='/')
 def dc_consumer(request):
     if request.method=='POST':
         current_user=request.user
@@ -225,7 +228,7 @@ def dc_consumer(request):
         new_form=DcConsumerInfoForm()
         context={'new_form':new_form}
         return render(request,'dc_consumer.html',context)
-
+@login_required(login_url='/')
 def connected_consumer(request):
     if request.method=='POST':
         current_user=request.user
@@ -253,7 +256,7 @@ def connected_consumer(request):
         context={'new_form':new_form}
         return render(request,'connected_consumer.html',context)
 
-
+@login_required(login_url='/')
 def domestic_connection_seven_day(request):
     if request.method=='POST':
         current_user=request.user
@@ -278,7 +281,7 @@ def domestic_connection_seven_day(request):
         new_form=DomesticConnectionSevenDayForm()
         context={'new_form':new_form}
         return render(request,'demestic_connection_seven_day.html',context)
-
+@login_required(login_url='/')
 def monthly_coordination_meeting_info(request):
     if request.method=='POST':
         current_user=request.user
@@ -304,7 +307,7 @@ def monthly_coordination_meeting_info(request):
         new_form=MonthlyCoordinationMeetingInfoForm()
         context={'new_form':new_form}
         return render(request,'monthly_coordination_meeting.html',context)
-
+@login_required(login_url='/')
 def necessary_action_against_accident(request):
     if request.method=='POST':
         current_user=request.user

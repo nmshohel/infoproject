@@ -1,6 +1,8 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+{% load has_group %}
+
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -50,6 +52,7 @@
                                 Dashboard
                             </a>
                             <div class="sb-sidenav-menu-heading">Interface</div>
+                            {% if request.user|has_group:"PBS" %}
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Information
@@ -90,10 +93,11 @@
                                     <a class="nav-link" href="{% url 'infoapp:my_new_con_info' %}">My New ConnectionInfo</a>
                                 </nav>
                             </div>
-                            
-                            <a class="nav-link collapsed" href="#" data-toggle="collaps" data-target="#collapseLayoutss" aria-expanded="false" aria-controls="collapseLayouts">
+                            {% endif %}
+                            {% if request.user|has_group:"MANAGEMENT" %}
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Management Reports
+                                Report
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             
@@ -111,6 +115,8 @@
    
                                 </nav>
                             </div>
+                            {% endif %}
+                         
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 Pages
