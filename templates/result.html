@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{{duration}}
+{{count}}
+<div class="container">
+  <div class="row">
+    <div class="col-6 m-auto">
+
+      
+          <!-- <form method="POST" action="{% url 'infoapp:meter-data-calculation' %}">
+            {% csrf_token %}
+            <label for="s">Substation:</label>
+
+            <select class="form form-control bg-light col-md-6" id="s" name="s_info" required>
+              <option value="">---------</option>
+              {% for s_s in s_s %}
+              
+              <option value="{{s_s.id}}">{{s_s}}</option>
+              {%endfor %}
+
+            </select>
+            <br>
+              {{data_form}}
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form> -->
+
+          <br>
+
+    </div>
+  </div>
+</div>
+
+<!-- <div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <table class="table table-striped table-width">
+
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Total Interuption</td>
+                    <td>
+                        
+                        {{count}} Nos
+                    </td>
+                    
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Total Duration:</td>
+                    <td>
+                        {{duration}} Minute
+                    </td>
+                 
+                  </tr>
+            
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div> -->
+
+
+{% endblock content %}

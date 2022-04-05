@@ -1,0 +1,28 @@
+
+{% extends 'base.html' %}
+{% block content%}
+
+<div class="container">
+  <div class="row">
+    <div class="col-6 m-auto">
+                {% if msg2 %}
+          <div class="alert alert-success" role="alert">
+              {{msg2}}
+          </div>
+          {% endif %}
+          <br>
+
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+
+            <p>Data: <input type="file" name="myfile" required></p>
+            <button class="btn btn-secondary" type="submit">Upload</button>
+          </form>
+          <br>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
